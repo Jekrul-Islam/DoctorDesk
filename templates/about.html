@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block main_content %}
+
+<div class=" aboutText about-section">
+
+  <p>Welcome to Doctor's Desk.<br>
+This website the ready to help you with what u need.
+      Our team is always by your side when you are in need.<br>
+      Our aim is to make sure that you are healthy and happy.<br>
+      Join us today to book an appointment and get started!</p>
+     <style>
+         .aboutText{
+                   color:#FFFFFF;
+                   padding: 20px;
+                   font-size: 15px;
+                   font-style: italic;
+
+                   }
+     </style>
+</div>
+
+
+<div class=" teamList row ">
+  <div class="column">
+    <div class="card">
+        <h2 style="text-align:center">Our Team</h2>
+      <div class=" teamList container text-light">
+        <h2>Dr. Tamzeed Ahmed</h2><br>
+        <p>
+            Qualification : MBBS, MRCP (UK), FRCP, FACC (USA)<br>
+            Designation : Senior Consultant<br>
+            Expertise : Cardiology<br>
+            Organization:AFMC – Armed Forces Medical College<br>
+            Chamber: Apollo Hospitals Dhaka<br></p>
+        <p>tamzeed@gmail.com  </p>
+
+      </div><br><br>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+
+      <div class=" teamList container text-light">
+        <h2>Dr. Shakil Gafur</h2><br>
+        <p>
+            Qualification : MBBS, FCPS, Neurology (MD)<br>
+            Designation : Senior Consultant<br>
+            Expertise : Neurology<br>
+            Organization:AFMC – Armed Forces Medical College<br>
+            Chamber: Apollo Hospitals Dhaka<br></p>
+          <p>shakil@gmail.com</p>
+
+      </div><br><br>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+
+      <div class=" teamList container text-light">
+        <h2>Dr. Munira Ferdousi</h2><br>
+        <p>
+            Qualification : MBBS, MPS(Dhaka), MS(Gynae)<br>
+            Designation : Senior Consultant<br>
+            Expertise : Gynecology<br>
+            Organization:AFMC – Armed Forces Medical College<br>
+            Chamber: Apollo Hospitals Dhaka<br></p>
+          <p >munira@gmail.com</p>
+
+      </div><br><br>
+    </div>
+  </div>
+</div>
+<style>
+    .teamList {
+              font-family: "Montserrat", sans-serif;
+              font-style:italic;
+              font-color: #FFFFFF;
+              weight:100%;
+              height:100%;
+              background-color:rgb(3 2 136 / 50%);
+              background-image:url(Home_Back.png);
+              }
+</style>
+
+{% endblock main_content %}

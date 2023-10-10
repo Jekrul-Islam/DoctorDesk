@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+<link rel="stylesheet"  href="{% static 'users\HomePage.css' %}">
+{% block main_content %}
+
+	<div class="main">
+
+		<div class="content" >
+			<h1 class="header"> Welcome  To  Our <span> <br> Doctor's </span>Desk</h1>
+			<style>
+				.header{
+				color:#FFFFFF;
+				padding:50px;
+				font-size: 80px;
+
+
+				}
+			</style>
+			<p class="par">If you are a new patient and would <br>  like to schedule an appointment <br>with a Doctor, sign up to our website.<br>Click on the List of doctor you would like to see from us.Hurry up!</p>
+			<style>
+				.par{
+				color:#FFFFFF;
+				padding:50px;
+				font-size: 20px;
+				font-style:italic;
+				}
+			</style>
+
+	</div>
+    </div>
+
+
+{% endblock main_content %}
+
+

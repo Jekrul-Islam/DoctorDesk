@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Patient registration{% endblock %}
+
+
+{% block main_content %}
+<html lang="en">
+  <head>
+    <title>Consultation</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+
+
+<!-- End Header -->
+   <!-- ======= Hero Section ======= -->
+   <div class="row">
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container text-center position-relative">
+          <h1 class='alert alert-info'>24/7 Care is available</h1>
+          <a href="http://127.0.0.1:8000/home" class=" text-light main-btn">Get Started</a>
+        </div>
+      </section>
+       <div class="col-md-6">
+           {% if request.user.username != 'admin1' %}
+        
+          <!-- End Hero -->
+          <div class="container mt-4 p-4">
+              <div class="row">
+                  <div class="col-md-12">
+
+                      <h2 class=" text-center text-light my-4">
+                          Find Consultations
+
+                      </h2>
+
+                      <form class="text-light" action="" method="post" class='my-3' p-3>
+                          {% csrf_token %}
+                          <div class="form-group row">
+                              <label class="col-lg-4">
+                                  Patient Name
+                              </label>
+                              <div class="col-sm-8 col-lg-8">
+                                  <input type="text"id="patient-name"class=" text form-control"
+                                 name='name' placeholder="Name"required>
+                                   <style>
+                                       .text{
+                                                background:#d1ecf1;
+                                       }
+                                   </style>
+                              </div>
+                          </div>
+                          <!---->
+
+
+
+                          <div class="form-group row">
+                            <label class="col-sm-4 col-lg-4">
+                                Contact
+                            </label>
+                            <div class="col-sm-8 col-lg-8">
+                                <input type="tel"id="contact"class="text form-control"
+                               name='contact' placeholder="123"required>
+
+                            </div>
+                        </div>
+                        <!---->
+        
+                        {% comment %}  {% endcomment %}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-lg-4">
+                                Doctor
+                            </label>
+                            <div class="col-sm-8 col-lg-8">
+                        <select name='semester'  class="text form-select" aria-label="Default select example">
+
+                            
+                            <option value="Dr. Tamzeed Ahmed">Dr. Tamzeed Ahmed</option>
+                            <option value="Dr. Shakil Gafur">Dr. Shakil Gafur</option>
+                            <option value="Dr. Munira Ferdousi">Dr. Munira Ferdousi</option>
+                          </select>
+                        </div>
+                    </div>
+        
+                        {% comment %}  {% endcomment %}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-lg-4">
+                              Date
+                            </label>
+                            <div class="col-sm-8 col-lg-8">
+                                <input name='date' type="date"id="date"class=" text form-control">
+
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-lg-4">
+                               Time
+                            </label>
+                            <div class="col-sm-8 col-lg-8">
+                                <input name='time' type="time"id="time"class=" text form-control">
+
+                               </div>
+                        </div>
+                        <!---->
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-lg-4">
+                               Symptoms
+                            </label>
+                            <div class="col-sm-8 col-lg-8">
+                                <textarea name='symtoms' id="symptoms" class=" text form-control" required></textarea>
+
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="form-group row justify-content-end">
+                            <div class="col-sm-5">
+                                <button type="submit"class="btn btn-form text-light text-center">
+                                    Confirm
+                                    <style>
+                                        .btn {
+                                            width: 100px;
+                                            height: 30px;
+                                            border: 2px solid #f6f4e6;
+                                            color: white;
+                                            background: #581845 ;
+                                            font-size: 13px;
+                                            border-radius:6px;
+                                            margin-bottom:10px;
+
+                                        }
+                                    </style>
+                                </button>
+                            </div>
+                        </div>
+        
+                      </form>
+                      {% endif  %}
+                  </div>
+{% if request.user.username != 'admin1' %}
+                  <div class="col-md-12 container">
+                    <h2>Your Appointments: </h2>
+                    <table class="table w-100 table-info">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Doctor</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                              <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for appintment in appointments %}
+                          <tr>
+                            <th scope="row">#</th>
+                            <td>{{appintment.doctor}}</td>
+                            <td>{{appintment.date}}</td>
+                            <td>{{appintment.time}}</td>
+                              <td><a href="delete/{{appintment.id}}" class="btn btn-danger">Delete</a></td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+
+                </div>
+       </div>
+       
+   </div>
+   
+      </div>
+  </div>
+
+    {% else %}
+
+
+        <div>
+			<table class=" text-light table">
+                <h2>Patient List</h2>
+				<thead>
+				  <tr>
+					<th scope="col">#</th>
+					<th scope="col">Patient Name</th>
+					<th scope="col">Contact</th>
+
+                    <th scope="col">Symptoms</th>
+
+				  </tr>
+				</thead>
+				<tbody>
+                {% for appointment in list_patient %}
+				  <tr>
+					<th scope="row">#</th>
+					<td>{{appointment.name}} </td>
+					<td>{{appointment.phone}}</td>
+					<td>{{appointment.symtoms}}</td>
+				  </tr>
+				 	{% endfor %}
+
+				</tbody>
+
+			  </table>
+		</div>
+    {%endif%}
+{% endblock %}

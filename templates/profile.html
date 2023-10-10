@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock title %}
+{% load static %}
+
+{% block main_content %}
+
+{% if user.is_authenticated %}
+<div class='row justify-content-center mt-4'>
+    <div class='col-lg-2'>
+        <img class="img-responsive mx-4"  src="{%static 'users/a.png'%}" width='150' height='150' >
+    </div>
+</div>
+  
+<div class="text-light row justify-content-around mt-4">
+    <div class="col-sm-6 text-center">
+        <img src="{{user.profile.profile_image.url}}" class="rounded float-right" height="300px">
+        <h2>Profile</h2>
+        <p>Username: {{user}}</p>
+        <p>Email: {{user.email}}</p>
+
+
+        
+        {% else %}
+        <p>Login To view your details </p>
+
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock main_content %}

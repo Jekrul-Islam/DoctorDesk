@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contac{% endblock title %}
+
+{% block main_content %}
+<html>
+<head>
+	<title class="text-light" >Contact Us</title>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<div class="main-div d-flex justify-content-center">
+		{% if request.user.username != 'admin1' %}
+		<form method='POST'>
+			{% csrf_token %}
+			<table class="table">
+				<h1>Contact With Doctor's Desk</h1>
+				<tr>
+					<td class="cnt">Name</td>
+					<td><input type="text" name="name" placeholder ="Enter your name" required></td>
+				</tr>
+				<tr>
+					<td class="cnt">Email</td>
+					<td><input type="email" name="email" placeholder="Enter your email" required></td>
+				</tr>
+				<tr>
+					<td class="cnt">Phone</td>
+					<td><input type="number" name="phone" placeholder="enter phone no" required></td>
+				</tr>
+				<tr>
+					<td class="cnt">Gender</td>
+					<td>
+						<input type="radio" name="gender" value="male">Male
+						<input type="radio" name="gender" value="female">Female
+					</td>
+				</tr>
+				<tr>
+					<td class="cnt">Comments and Questions</td>
+					<style>
+						.cnt{
+						    	color:#FFFFFF;
+						    }
+					</style>
+					<td><textarea name="comments" id="comments_and_questions" placeholder rows="3" cols="40" class="validate['required'] form-control" title style="width: 757px; height: 52px;" data-wysiwyg="0" data-load-state data-tooltip></textarea></td>
+				</tr>
+				<tr>
+					<td><button class="submit " type="submit">Submit</button>
+					 <style>
+                                        .submit {
+                                            width: 100px;
+                                            height: 30px;
+                                            border: 2px solid #f6f4e6;
+                                            color: white;
+                                            background: #581845 ;
+                                            font-size: 13px;
+                                            border-radius:6px;
+                                            margin-bottom:10px;
+
+
+                                        }
+                                    </style>
+					</td>
+				</tr>
+			</table>
+		</form>
+		{% else %}
+		<div>
+			<table class=" text-light table">
+				<thead>
+				  <tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Gender</th>
+					<th scope="col">Comments</th>
+				  </tr>
+				</thead>
+				<tbody>
+					{% for contact in contacts %}
+				  <tr>
+					<th scope="row">#</th>
+					<td>{{contact.name}}</td>
+					<td>{{contact.email}}</td>
+					<td>{{contact.gender}}</td>
+					<td>{{contact.comments}}</td>
+				  </tr>
+				  	{% endfor %}
+				  
+				</tbody>
+
+			  </table>
+		</div>
+
+		
+		{% endif %}
+	</div>
+</body>
+</html>
+
+
+{% endblock main_content %}

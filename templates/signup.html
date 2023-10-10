@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock title %}
+
+
+    {% block main_content %}
+
+    <div class="container">
+        <div class="row justify-content-around mt-4">
+            <div class="col-sm-6">
+                <h4 class="text-light text-center">Sign Up Form</h4>
+
+            </div>
+        </div>
+        <div class="row justify-content-around mt-5">
+            <div class="col-sm-6">
+                <form class="text-light" action="" method="post" class='p-3 rounded'>
+                    {% csrf_token %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{message}}</strong>
+                            <button type="button" class="btn-close"
+                            data-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        {% endfor %}
+                    {% endif %}
+
+
+                    {% for fm in form %}
+                        {{fm.label_tag}}
+                        {{fm}}
+                        <small class='text-danger'>{{fm.errors|striptags}}</small>
+                    {% endfor %}
+                    <input type="submit" value="Submit" class='btn btn-primary my-3'>
+                      <style>
+                                        .btn {
+                                            width: 100px;
+                                            height: 30px;
+                                            border: 2px solid #f6f4e6;
+                                            color: white;
+                                            background: #581845 ;
+                                            font-size: 13px;
+                                            border-radius:6px;
+                                            margin-bottom:10px;
+
+
+                                        }
+                                    </style>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock main_content %}

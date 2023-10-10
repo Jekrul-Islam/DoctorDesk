@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}
+
+{% block main_content %}
+<section class="container">
+    <div class='row justify-content-around mt-4'>
+        <div class='col-sm-2'>
+            <h3 class="text-light">Login Form</h3>
+        </div>
+    </div>
+
+    {% comment %} message {% endcomment %}
+
+    <div class="container">
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li> {% if message.tags %} class="alert alert-{{message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+    </div>
+
+    <div class='row justify-content-around'>
+        <div class='col-md-4'>
+           <form class="text-light" action="" method="post" class='my-3' p-3>
+            {% csrf_token %}
+            {% for fm in form %}
+                    {{fm.label_tag}}
+                    {{fm}}
+                    <small class='text-danger'>{{fm.errors}}</small>
+
+            {% endfor %}
+                <input type="Submit" value='Login' class="btn btn-primary mt-3">
+                     <style>
+                                        .btn {
+                                            width: 100px;
+                                            height: 30px;
+                                            border: 2px solid #f6f4e6;
+                                            color: white;
+                                            background: #581845 ;
+                                            font-size: 13px;
+                                            border-radius:6px;
+                                            margin-bottom:10px;
+
+
+                                        }
+                                    </style>
+
+                <a href="reset-password" class = 'float-end mt-4'>Reset Password!</a>
+
+               </style>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock main_content %}
+

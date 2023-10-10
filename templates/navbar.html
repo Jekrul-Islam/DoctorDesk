@@ -1,0 +1,63 @@
+{% load static %}
+
+
+<link rel="stylesheet"  href="{% static 'users\navbar.css' %}">
+{% block main_content %}
+
+<div class="navbar">
+           <label class="logo"><img class="lg" src="static/users/doc.png" alt="Logo">
+               <style>
+                   .lg{
+                        margin-bottom:27px;
+                        width: 90px;
+                        height:90px;
+                        }
+               </style>
+
+               Doctor's Desk</label>
+
+
+
+    <nav class="navMenu">
+      <a href="home">Home</a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+      <a href="appointment">Appointment</a>
+
+      <div class="dot"></div>
+
+
+
+
+     <ul class = "userOption">
+
+            {% if  request.user.is_authenticated %}
+
+            <li>
+                <a class="nav-link" href="#">{{request.user}}</a>
+            </li >
+            <li class="button">
+                <a class="nav-link" href="profile">Profile</a>
+            </li>
+            <li class="button">
+                <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+            </li>
+            {% else %}
+
+            <li class="button">
+                <a class="nav-link" href="login">Login</a>
+            </li>
+            <li class="button">
+                <a class="nav-link" href="signup">Sign UP</a>
+            </li>
+            {% endif %}
+        </ul>
+
+        </nav>
+
+
+
+
+		</div>
+
+{% endblock main_content %}
